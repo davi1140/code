@@ -16,27 +16,27 @@ def strategy(history, memory):
     Speak = memory
     choice = [None] * (gLength / 4)
     test = None
-    Switch = 0
+    Switches = 0
     counter = 0
     
     test = gLength
     while(test > 1): # Testing whether the cycle has reached 4  or not
         test = test % 4
         if(test > 0)
-            Switch = 0 
+            Switches = 0 
         elif(test == 1):
-            Switch = 1
+            Switches = 1
             break
             
     if (gLength < 4): # Testing range
         choice = Schedule[gLength]
-    elif (Switch == 1): # Time to analyze the testing stage and decide what to do based on what the opponent did in that time!
+    elif (Switches == 1): # Time to analyze the testing stage and decide what to do based on what the opponent did in that time!
         opponentsActions = history[1]
         if np.count_nonzero(opponentsActions-1) == 0: # The opponent stayed silent all 4 turns! Never "told the truth"!
             Speak = True # Let's switch to exploitation.
         else:
             Speak = False # Let's switch to Tit For Tat.
-    elif (Switch == 0):
+    elif (Switches == 0):
         if Speak:
             choice = "tell truth"
         else:
