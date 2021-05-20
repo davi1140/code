@@ -40,6 +40,8 @@ def strategy(history, memory):
         if Speak:
             choice = "tell truth"
         else:
-            choice = "stay silent" if history[1,-1] == 1 else "tell truth" # Do Tit for Tat
+            choice = "stay silent" 
+            if (history[1,-1] == 1) 
+            else "tell truth" # Do Tit for Tat
     
     return choice, Speak
